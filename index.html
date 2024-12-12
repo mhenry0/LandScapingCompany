@@ -31,73 +31,97 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .hero {
-            background: url('banner.webp') center/cover no-repeat;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-        .portfolio img {
-            border-radius: 8px;
-        }
-        .custom-bg-green {
-    background-color: green;
+       /* Global Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    line-height: 1.6;
+    font-family: 'Arial';
+}
+.navbar {
+    background-color: #ffffff;
+}
+.navbar-brand, .nav-link {
+    color: #000000 !important;
+}
+.navbar-toggler-icon {
+    background-color: #bdbcbc;
 }
 
-
-.hero-parallax {
-    background-image: url('./landscapingparallax.jpg'); /* Replace with your image URL */
-    height: 100vh; /* Full viewport height */
-    background-position: center;
-    background-repeat: no-repeat;
+/* Hero Section */
+.hero {
+    background: url('./img/construction3.webp') no-repeat center center;
     background-size: cover;
-    background-attachment: fixed; /* Enables parallax effect */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; /* Adjust text color for readability */
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
+.hero h1 {
+    font-size: 4rem;
 }
-
-h2 {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.text-muted {
-    font-size: 1rem;
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
 }
 
-.font-weight-bold {
-    font-size: 2rem;
-    font-weight: bold;
+/* Services Section */
+.service-icon {
+    font-size: 48px;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+.service-item {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+.service-item:hover {
+    transform: translateY(-10px);
 }
 
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-    margin-top: 30px;
+/* Footer */
+footer {
+    background-color: #2a2a2a;
+    color: white;
+    padding: 20px 0;
+}
+footer a {
+    color: #0d6efd;
 }
 
-.text-start {
-    text-align: left;
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
 }
 
-.mt-4 {
-    margin-top: 1.5rem;
+/* Style for the floating WhatsApp button */
+.whatsapp-btn {
+position: fixed;
+bottom: 50px; /* Position it at the bottom of the screen */
+right: 20px;  /* Position it on the right side */
+background-color: #25D366; /* WhatsApp green */
+color: white;
+border-radius: 50%;
+padding: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+font-size: 10px;
+z-index: 1000; /* Ensures the button is always on top */
+transition: transform 0.3s ease-in-out;
 }
 
-.mt-5 {
-    margin-top: 3rem;
+.whatsapp-btn:hover {
+transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.whatsapp-btn i {
+font-size: 35px;
 }
 
 
@@ -405,6 +429,10 @@ h2 {
 </section>
 
 
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/1234567890" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
    <!-- Footer -->
 <footer class="py-5 custom-bg-green text-white">
