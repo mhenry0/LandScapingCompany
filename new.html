@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Selector with Google Translate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style for the language selector */
+        #language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+    </style>
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,es,fr,de,it,pt', // List of languages you want to include
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body>
+
+    <!-- Language Selector Dropdown (for custom handling) -->
+    <div id="language-selector" class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Your Language
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en')">English</a></li>
+            <li><a class="dropdown-item" href="#" onclick="changeLanguage('es')">Español</a></li>
+            <li><a class="dropdown-item" href="#" onclick="changeLanguage('fr')">Français</a></li>
+        </ul>
+    </div>
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" class="d-none"></div>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h1 id="welcome-message">Welcome to our Website!</h1>
+        <p id="description">Select your preferred language from the dropdown above or use the Google Translate widget to translate the entire page.</p>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Function to change the language using custom dropdown
+        function changeLanguage(language) {
+            // Set the language in localStorage
+            localStorage.setItem('language', language);
+
+            // Trigger Google Translate for the selected language
+            var googleTranslate = new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,es,fr,de,it,pt'}, 'google_translate_element');
+            googleTranslate.translatePage(language, 'en');
+        }
+
+        // Load the language on page load from localStorage
+        window.onload = function () {
+            const selectedLanguage = localStorage.getItem('language');
+
+            if (selectedLanguage) {
+                // Change the content based on the selected language
+                if (selectedLanguage === 'es') {
+                    document.getElementById('welcome-message').innerText = "¡Bienvenido a nuestro sitio web!";
+                    document.getElementById('description').innerText = "Selecciona tu idioma preferido desde el menú desplegable o usa el widget de Google Translate para traducir toda la página.";
+                } else if (selectedLanguage === 'fr') {
+                    document.getElementById('welcome-message').innerText = "Bienvenue sur notre site web!";
+                    document.getElementById('description').innerText = "Sélectionnez votre langue préférée dans le menu déroulant ou utilisez le widget Google Translate pour traduire toute la page.";
+                }
+                // Add more languages as needed
+            }
+        }
+    </script>
+
+</body>
+</html>
